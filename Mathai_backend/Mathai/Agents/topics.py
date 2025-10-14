@@ -1,0 +1,22 @@
+topics = [
+    "shopping", 
+    "recycling", 
+    "travel", 
+    "sports", 
+    "cooking", 
+    "classroom", 
+    "saving", 
+    "gardening", 
+    "party", 
+    "school trip",
+    "baking", 
+    "sharing", 
+    "time", 
+    "temperature", 
+    "charity", 
+    "building", 
+    "reading", 
+    "pet care", 
+    "fruits", 
+    "fundraiser"
+    ]
