@@ -40,5 +40,7 @@ def save_feedback(session_id,user_answer,is_correct,feedback):
     }
 
     res = supabase.table("math_problem_submissions").insert(data).execute()
-
-    return res.data
+    if res.data and len(res.data) > 0:
+        return res.data
+    else:
+        return None
