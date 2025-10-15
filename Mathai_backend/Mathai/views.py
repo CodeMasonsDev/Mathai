@@ -11,22 +11,19 @@ def routes(request):
     ]
     return Response(routes)
 
-
 @api_view(["GET"])
 def generate_problem_solution(request):
     data = generateWorldProblem()
-    json_result = data.model_dump()
-    return Response(json_result,status=status.HTTP_200_OK)
-
+    return Response(data,status=status.HTTP_200_OK)
 
 @api_view(["POST"])
 def generate_feedback(request):
     data = request.data
-    problem = data.get("problem")
-    solution = data.get("solution")
+
+    problemSession_id = data.get("problem_id") 
     student_answer = data.get("student_answer")
 
-    feedback_dict = generateFeedback(problem, solution, student_answer)
-    json_result = feedback_dict.model_dump()
-    return Response(json_result, status=status.HTTP_200_OK)
+    result = generateFeedback(problemSession_id,student_answer)
+    
+    return Response(result, status=status.HTTP_200_OK)
 
