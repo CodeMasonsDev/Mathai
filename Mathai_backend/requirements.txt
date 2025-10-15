@@ -1,0 +1,7 @@
+langchain 
+langchain-core 
+langchain-openai
+supabase
+django 
+djangorestframework
+python-dotenv
