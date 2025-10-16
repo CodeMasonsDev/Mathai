@@ -10,10 +10,30 @@ key:str = os.environ.get("SUPABASE_KEY")
 supabase: Client= create_client(url,key)
 
 
+def get_all_records():
+    res = supabase.table("math_problem_submissions").select("*").order("id",desc=True).execute()
+   
+    records = []
+    for record in res.data:
+        problem = get_world_problem(record["id"])
+        
+        records.append({
+            "problem": problem[0]["problem_text"],
+            "solution": problem[0]["correct_answer"],
+            "user_answer": record["user_answer"],
+            "is_correct": record["is_correct"],
+            "feedback_text": record["feedback_text"]
+        })
+    
+    return records 
+
+
 
 def get_world_problem(session_id):
     res = supabase.table("math_problem_sessions").select("id,problem_text,correct_answer").eq("id",session_id).execute()
     return res.data
+
+
 
 
 def save_generatedProblem(problem:str,solution:str):
