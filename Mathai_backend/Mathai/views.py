@@ -2,7 +2,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
 from .Agents.agent import generateWorldProblem,generateFeedback
-
+from .services.supabase_service import get_all_records
 @api_view(["GET"])
 def routes(request):
     routes = [
@@ -27,3 +27,7 @@ def generate_feedback(request):
     
     return Response(result, status=status.HTTP_200_OK)
 
+@api_view(["GET"])
+def get_records(request):
+    data = get_all_records()
+    return Response(data,status=status.HTTP_200_OK)

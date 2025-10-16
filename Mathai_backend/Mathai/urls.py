@@ -23,5 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.routes,name="routes"),
     path('generate-world-problem/',views.generate_problem_solution,name='generate-world-problem'),
-    path('generate-feedback/',views.generate_feedback,name='generate-feedback')
+    path('generate-feedback/',views.generate_feedback,name='generate-feedback'),
+    path('get-all-records/',views.get_records,name='get-all-records')
+
 ]

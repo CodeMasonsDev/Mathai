@@ -17,7 +17,15 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 MODEL = os.getenv("MODEL")
 
-llm = ChatOpenAI(model=MODEL)
+# for openai MODEL = "gpt-4o-mini"
+# llm = ChatOpenAI(model=MODEL)
+
+# for llama LLM 
+llm = ChatOpenAI(
+    model=MODEL,
+    base_url="https://openrouter.ai/api/v1",  
+    api_key=OPENAI_API_KEY
+) 
 
 def generateWorldProblem():
     
