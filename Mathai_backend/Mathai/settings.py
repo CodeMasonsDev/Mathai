@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-n2&a7c=(f6-_va2_^qsp=kyu9ebdb7dr!_(tk@=%ec@%vb06l6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'mathaibackend-production.up.railway.app',
+    'localhost',
+    '127.0.0.1'
+]
 
 
 # Application definition
@@ -67,8 +71,8 @@ CORS_ALLOW_ALL_ORIGINS = True  # for testing only, restrict later
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # React app
-    "http://127.0.0.1:3000",
+  'https://mathaibackend-production.up.railway.app',
+    'http://localhost:3000',
 ]
 
 ROOT_URLCONF = 'Mathai.urls'
