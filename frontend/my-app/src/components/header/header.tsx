@@ -23,9 +23,7 @@ export default function Header() {
           <Link href="/history" className="hover:text-blue-600 transition">
             History
           </Link>
-          <Link href="/settings" className="hover:text-blue-600 transition">
-            Settings
-          </Link>
+          <p className="hover:text-blue-600 transition">Settings</p>
         </nav>
 
         <div className="hidden md:block w-10 h-10 bg-gray-400 rounded-full"></div>

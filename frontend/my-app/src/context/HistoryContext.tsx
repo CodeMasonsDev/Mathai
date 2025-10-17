@@ -11,6 +11,8 @@ export function HistoryProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const fetchRecords = async () => {
+      console.log("Fetching records");
+
       try {
         const res = await getHistory();
         console.log("records", res);
@@ -21,6 +23,23 @@ export function HistoryProvider({ children }: { children: React.ReactNode }) {
     };
     fetchRecords();
   }, []);
+
+  const fetchRecords = async () => {
+    // if (records && records.length > 0) {
+    //   console.log("already fetched");
+
+    //   return;
+    // }
+    console.log("Fetching records");
+
+    try {
+      const res = await getHistory();
+      console.log("records", res);
+      setRecords(res);
+    } catch (error) {
+      console.error("Failed to fetch data", error);
+    }
+  };
 
   function addRecords(newRecord: Feedback) {
     const mappedRecord: Records = {
@@ -37,7 +56,7 @@ export function HistoryProvider({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <HistoryContext.Provider value={{ records, addRecords }}>
+    <HistoryContext.Provider value={{ records, addRecords, fetchRecords }}>
       {children}
     </HistoryContext.Provider>
   );

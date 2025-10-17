@@ -18,12 +18,16 @@ export default function Home() {
   const [answer, setAnswer] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const [loading2, setLoading2] = useState(false);
+  const [isError, setIsError] = useState<boolean>(false);
 
+  // uncomment this if you want everytime the page loads a problem will be generated
   // useEffect(() => {
   //   handleGenerateProblem();
   // }, []);
+
   const { addRecords } = useHistoryData();
 
+  // generate world problem
   async function handleGenerateProblem(): Promise<void> {
     try {
       setGeneratedProblem(null);
@@ -39,12 +43,19 @@ export default function Home() {
     }
   }
 
+  // submitting answer and getting a feedback from ai
   async function handleSubmitAnswer(
     problem_id: string,
     student_answer: string
   ): Promise<void> {
+    if (!problem_id || !student_answer) {
+      setIsError(true);
+      return console.log("Input field cannot be empty");
+    }
+    setIsError(false);
     setGeneratedFeedback(null);
     setLoading2(true);
+
     try {
       const res = await submitAnswer({ problem_id, student_answer });
       setGeneratedFeedback(res);
@@ -125,6 +136,9 @@ export default function Home() {
               Submit Answer
             </button>
           </div>
+          {isError && (
+            <p className="text-red-500 ml-2">Please enter your answer!</p>
+          )}
         </section>
 
         {/* Feedback Section */}
