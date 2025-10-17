@@ -1,6 +1,7 @@
 import { Records } from "@/types/types";
 import axiosInstance from "./axiosInstance";
 
+// get all the records of the generated problems with its feedback
 export async function getRecords(): Promise<Records[]> {
   try {
     const res = await axiosInstance.get<Records[]>("get-all-records");

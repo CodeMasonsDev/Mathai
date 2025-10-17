@@ -1,10 +1,13 @@
 "use client";
 import HistoryCard from "@/components/cards/history-card";
 import { useHistoryData } from "@/context/HistoryContext";
+import { useEffect } from "react";
 
 function History() {
-  const { records } = useHistoryData();
-
+  const { records, fetchRecords } = useHistoryData();
+  // useEffect(() => {
+  //   fetchRecords();
+  // }, []);
   return (
     <div className="flex justify-center min-h-screen bg-gray-100">
       <main className="w-full max-w-7xl px-4 sm:px-6 py-8 flex flex-col gap-8">
