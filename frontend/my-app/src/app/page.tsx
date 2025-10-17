@@ -100,9 +100,9 @@ export default function Home() {
           )}
 
           {generatedProblem && (
-            <p className="text-gray-700 text-base leading-relaxed">
-              {generatedProblem.Problem}
-            </p>
+            <div className="flex items-center justify-center p-8 text-gray-500 text-base leading-relaxed">
+              <p> "{generatedProblem.Problem}"</p>
+            </div>
           )}
         </section>
 
