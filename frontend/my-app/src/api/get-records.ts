@@ -1,18 +1,26 @@
+"use server";
 import { Records } from "@/types/types";
-import axiosInstance from "./axiosInstance";
+import { unstable_cache } from "next/cache";
 
-// get all the records of the generated problems with its feedback
-export async function getRecords(): Promise<Records[]> {
-  try {
-    const res = await axiosInstance.get<Records[]>("get-all-records");
-    if (!res.data) {
-      throw new Error("Empty response. Please try again");
+//cached the records
+async function fetchRecords(): Promise<Records[]> {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASEURL}/get-all-records`,
+    {
+      next: {
+        revalidate: 300,
+      },
     }
-    return res.data;
-  } catch (error) {
-    console.log("Error fetching records. Please try again", error);
-    throw new Error(
-      "Failed to fetch all records from the database. Please try again"
-    );
-  }
+  );
+
+  const data = await res.json();
+
+  if (!data) throw new Error("Empty response. Please try again");
+
+  return data;
 }
+
+export const getRecords = unstable_cache(fetchRecords, ["records"], {
+  revalidate: 300,
+  tags: ["records"],
+});
