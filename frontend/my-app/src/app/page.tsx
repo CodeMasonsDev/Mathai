@@ -93,9 +93,11 @@ export default function Home() {
 
         {/* Generated Problem */}
         <section className="bg-white shadow rounded-2xl p-5 w-full">
-          <div className="flex items-center gap-3 mb-3">
-            <QuizIcon className="text-[#375dfc]" />
-            <h1 className="font-bold text-xl sm:text-2xl">Generated Problem</h1>
+           <div className="flex items-center gap-3 mb-3">
+            <QuizIcon className=" text-[#375dfc] dark:text-[#375dfc]" />
+            <h1 className="font-bold text-xl sm:text-2xl  dark:text-gray-900">
+              Generated Problems
+            </h1>
           </div>
 
           {loading && <p className="text-gray-500 text-sm">Generating...</p>}
@@ -123,7 +125,7 @@ export default function Home() {
             <Input
               type="text"
               placeholder="Enter your answer..."
-              className="w-full md:flex-1 h-[60px] px-5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 text-base md:text-lg"
+              className="w-full md:flex-1 h-[60px] dark:text-black px-5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 text-base md:text-lg"
               value={answer}
               onChange={(e) => setAnswer(e.target.value)}
             />
@@ -143,9 +145,11 @@ export default function Home() {
 
         {/* Feedback Section */}
         <section className="bg-white p-5 shadow rounded-2xl">
-          <div className="flex items-center gap-2 mb-3">
-            <LightbulbOutlineIcon className="text-red-500" />
-            <h1 className="font-bold text-xl sm:text-2xl">AI Feedback</h1>
+           <div className="flex items-center gap-2 mb-3">
+            <LightbulbOutlineIcon className="text-red-500 dark:text-red-500" />
+            <h1 className="font-bold text-xl sm:text-2xl dark:text-black">
+              AI Feedback
+            </h1>
           </div>
           {loading2 && <p className="text-gray-500 text-sm">Checking...</p>}
 
